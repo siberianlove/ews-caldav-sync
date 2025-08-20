@@ -27,5 +27,5 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build & Publish to Github Container registry
         run: |
-          docker build . --tag ghcr.io/mhthies/ews-caldav-sync:latest
-          docker push ghcr.io/mhthies/ews-caldav-sync:latest
+          docker build . --tag ghcr.io/siberianlove/ews-caldav-sync:latest
+          docker push ghcr.io/siberianlove/ews-caldav-sync:latest
