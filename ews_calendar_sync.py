@@ -23,6 +23,7 @@ from exchangelib import Credentials, Configuration, Account, DELEGATE, IMPERSONA
 import caldav
 import icalendar
 
+
 from exchangelib.protocol import BaseProtocol, NoVerifyHTTPAdapter
 import requests
 
