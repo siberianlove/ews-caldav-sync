@@ -23,6 +23,9 @@ from exchangelib import Credentials, Configuration, Account, DELEGATE, IMPERSONA
 import caldav
 import icalendar
 
+from exchangelib.protocol import BaseProtocol, NoVerifyHTTPAdapter
+import requests
+
 logger = logging.getLogger(__name__)
 
 parser = argparse.ArgumentParser(description='Incrementally synchronizes a Microsoft Exchange calendar to a CalDAV server.')
@@ -35,6 +38,8 @@ with open(args.config, encoding='utf-8') as f:
 logging.basicConfig(level=config['misc']['loglevel'])
 
 # EWS connection
+BaseProtocol.HTTP_ADAPTER_CLS = NoVerifyHTTPAdapter
+
 ews_credentials = Credentials(username=config['ews']['username'], password=config['ews']['password'])
 ews_config = Configuration(server=config['ews']['server'], credentials=ews_credentials)
 ews_account = Account(config['ews']['account'], access_type=IMPERSONATION if config['ews']['impersonate'] else DELEGATE,
